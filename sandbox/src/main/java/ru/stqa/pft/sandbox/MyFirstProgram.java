@@ -8,7 +8,7 @@ public class MyFirstProgram {
         Point p1 = new Point(1, -7);
         Point p2 = new Point(-4, 5);
 
-        System.out.println("Расстояние между двумя точками функцией P1(" + p1.x + "," + p1.y + ")" + " и P2(" + p2.x + "," + p2.y + ")" + " равно: " + p2.distance(p1, p2));
+        System.out.println("Расстояние между двумя точками функцией P1(" + p1.x + "," + p1.y + ")" + " и P2(" + p2.x + "," + p2.y + ")" + " равно: " + Point.distance(p1, p2));
         System.out.println("Расстояние между двумя точками методом P1(" + p1.x + "," + p1.y + ")" + " и P2(" + p2.x + "," + p2.y + ")" + " равно: " + p1.distance(p2));
 
     }
