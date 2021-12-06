@@ -38,4 +38,22 @@ public class ContactHelper extends HelperBase {
     public void gotoContactPage() {
         click(By.linkText("add new"));
     }
+
+    public void selectContact() { click(By.name("selected[]"));
+    }
+
+    public void initContactModification() { click(By.xpath ("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+    }
+
+    public void updateContact() { click(By.name("update"));
+    }
+
+    public void deleteContact() { click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+    }
+
+    public void delContact() { click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
+
+    }
+
 }
