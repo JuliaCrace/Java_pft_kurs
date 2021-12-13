@@ -8,7 +8,7 @@ public class AddNewContactTests extends TestBase {
     @Test
     public void testAddNewContact() throws Exception {
         app.getContactHelper().gotoContactPage();
-        app.getContactHelper().fillContactForm(new ContactData("Alex", "Ivanov", "г. Москва, проспект Ленинский, д.2", "+79510990101", "ivanov@mail.ru"));
+        app.getContactHelper().fillContactForm(new ContactData("Alex", "Ivanov", "г. Москва, проспект Ленинский, д.2", "+79510990101", "ivanov@mail.ru", "test1"), true);
         app.getContactHelper().submitContact();
 
     }
