@@ -54,7 +54,7 @@ public class ContactHelper extends HelperBase {
     public void selectContact() { click(By.name("selected[]"));
     }
 
-    public void initContactModification() { click(By.xpath ("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img"));
+    public void initContactModification() { click(By.xpath ("//img[@alt='Edit']"));
     }
 
     public void updateContact() { click(By.name("update"));
@@ -68,4 +68,19 @@ public class ContactHelper extends HelperBase {
 
     }
 
+    public void createContact(ContactData contact, boolean b) {
+        gotoContactPage();
+        fillContactForm(contact, true);
+        submitContact();
+        gotoHomePage();
+
+    }
+
+    public void gotoHomePage() { click(By.linkText("home page"));
+
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
