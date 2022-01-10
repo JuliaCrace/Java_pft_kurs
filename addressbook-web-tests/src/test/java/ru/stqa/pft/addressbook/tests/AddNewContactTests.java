@@ -8,13 +8,8 @@ public class AddNewContactTests extends TestBase {
 
     @Test
     public void testAddNewContact() throws Exception {
-        app.getNavigationHelper().gotoGroupPage();
-        if (!app.getGroupHelper().isTherAGroup()) ;
-        {
-            app.getGroupHelper().createGroup(new GroupData("test1", null, null));
-        }
         app.getContactHelper().gotoContactPage();
-        app.getContactHelper().createContact(new ContactData("Alex", "Ivanov", "г. Москва, проспект Ленинский, д.2", "+79510990101", "ivanov@mail.ru", "test1"));
+        app.getContactHelper().createContact(new ContactData("Alex", "Ivanov", "г. Москва, проспект Ленинский, д.2", "+79510990101", "ivanov@mail.ru", "test1"), app);
 
     }
 
