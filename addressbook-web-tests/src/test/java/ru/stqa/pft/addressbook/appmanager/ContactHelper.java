@@ -71,7 +71,7 @@ public class ContactHelper extends HelperBase {
         app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isTherAGroup()) ;
         {
-            app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+            app.getGroupHelper().createGroup(new GroupData(contact.getGroup(), null, null));
         }
         gotoContactPage();
         fillContactForm(contact, true);
