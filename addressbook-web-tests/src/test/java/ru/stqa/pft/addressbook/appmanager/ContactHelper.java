@@ -57,8 +57,8 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selectContact(int index) {
-   wd.findElements(By.xpath("//tr[2]//input")).get(index).click();;
-      //  click(By.name("selected[]"));
+      //wd.findElements(By.xpath("//tr[2]//input")).get(index).click();;
+      wd.findElements(By.name("selected[]")).get(index).click();
       //  click(By.xpath("//tr[2]//input"));
     }
 
@@ -72,7 +72,6 @@ public class ContactHelper extends HelperBase {
 
     public void deleteContact() {
         click(By.xpath("//input[@value='Delete']"));
-        wd.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS); // pageload timeout
         wd.switchTo().alert().accept();
     }
 
@@ -104,13 +103,15 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
+
     public int getContactCount() {
-       return wd.findElements(By.name("selected[]")).size();
-       // return wd.findElements(By.xpath("//tr[2]//input")).size();
+        return wd.findElements(By.name("selected[]")).size();
+       //return wd.findElements(By.xpath("//tr[2]//input")).size();
 
     }
 
     public void gotoHome() {
         click(By.linkText("home"));
     }
+
 }
