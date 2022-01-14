@@ -2,10 +2,16 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
 
@@ -50,19 +56,28 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void selectContact() { click(By.name("selected[]"));
+    public void selectContact(int index) {
+   wd.findElements(By.xpath("//tr[2]//input")).get(index).click();;
+      //  click(By.name("selected[]"));
+      //  click(By.xpath("//tr[2]//input"));
     }
 
-    public void initContactModification() { click(By.xpath ("//img[@alt='Edit']"));
+    public void initContactModification() {
+        click(By.xpath("//img[@alt='Edit']"));
     }
 
-    public void updateContact() { click(By.name("update"));
+    public void updateContact() {
+        click(By.name("update"));
     }
 
-    public void deleteContact() { click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+    public void deleteContact() {
+        click(By.xpath("//input[@value='Delete']"));
+        wd.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS); // pageload timeout
+        wd.switchTo().alert().accept();
     }
 
-    public void delContact() { click(By.xpath("//input[@value='Delete']"));
+    public void delContact() {
+        click(By.xpath("//input[@value='Delete']"));
         wd.switchTo().alert().accept();
 
     }
@@ -80,11 +95,22 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    public void gotoHomePage() { click(By.linkText("home page"));
+    public void gotoHomePage() {
+        click(By.linkText("home page"));
 
     }
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getContactCount() {
+       return wd.findElements(By.name("selected[]")).size();
+       // return wd.findElements(By.xpath("//tr[2]//input")).size();
+
+    }
+
+    public void gotoHome() {
+        click(By.linkText("home"));
     }
 }
