@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,6 +12,8 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
@@ -114,4 +117,16 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home"));
     }
 
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String firstname = element.getText();
+            String lastname = element.getText();
+            ContactData contact = new ContactData(firstname, lastname, null, null, null, null);
+            contacts.add(contact);
+
+        }
+        return contacts;
+    }
 }
