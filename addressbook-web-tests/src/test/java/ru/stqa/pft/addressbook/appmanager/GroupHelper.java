@@ -69,7 +69,7 @@ public class GroupHelper extends HelperBase {
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group")); // найти все элементы, которые имеют тег span и класс групп
         for (WebElement element : elements) {
             String name = element.getText(); // получаем имя группы из пробегаемого списка
-            String id = element.findElement(By.tagName("input")).getAttribute("value");
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             GroupData group = new GroupData (id, name, null, null);
             groups.add(group);
         }
