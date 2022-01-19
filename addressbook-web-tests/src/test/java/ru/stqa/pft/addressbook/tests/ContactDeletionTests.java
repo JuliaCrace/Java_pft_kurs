@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 public class ContactDeletionTests extends TestBase {
 
 
-    @Test
+    @Test (enabled = false)
     public void testContactDeletion() {
         if (!app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Alex", "Ivanov", "г. Москва, проспект Ленинский, д.2", "+79510990101", "ivanov@mail.ru", "test2"), app);

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AddNewContactTests extends TestBase {
 
-    @Test
+    @Test (enabled = false)
     public void testAddNewContact() throws Exception {
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().gotoContactPage();

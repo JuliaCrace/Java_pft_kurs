@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase{
 
-    @Test
+    @Test (enabled = false)
     public void testContactModification () {
         if (! app.getContactHelper().isThereAContact()) {
               app.getContactHelper().createContact(new ContactData("Alex", "Ivanov", "г. Москва, проспект Ленинский, д.2", "+79510990101", "ivanov@mail.ru", "test2"), app);
