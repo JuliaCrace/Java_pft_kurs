@@ -3,10 +3,6 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -14,7 +10,6 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends HelperBase {
 
@@ -84,10 +79,10 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createContact(ContactData contact, ApplicationManager app) {
-        app.getNavigationHelper().gotoGroupPage();
-        if (!app.getGroupHelper().isTherAGroup()) ;
+        app.goTo().groupPage();
+        if (!app.group().isTherAGroup()) ;
         {
-            app.getGroupHelper().createGroup(new GroupData(contact.getGroup(), null, null));
+            app.group().create(new GroupData(contact.getGroup(), null, null));
         }
         gotoContactPage();
         fillContactForm(contact, true);
