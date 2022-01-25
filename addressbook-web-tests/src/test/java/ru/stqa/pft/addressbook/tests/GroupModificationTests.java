@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase {
+
     @BeforeMethod
     public void ensurePrecondition () {
         app.goTo().groupPage();
