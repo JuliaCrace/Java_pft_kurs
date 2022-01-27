@@ -19,11 +19,21 @@ public class GroupCreationTests extends TestBase {
         Groups before = app.group().all(); // список объектов GroupData до создания группы
         GroupData group = new GroupData().withName("test2");
         app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size() + 1));
         Groups after = app.group().all(); // содержит список элементов, после того, как создана новая группа
-        assertThat(after.size(), equalTo(before.size() + 1)); // проверка размера списка после создания группы с размером списка до создания группы
 
         assertThat(after, equalTo(
                 before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
 
+    @Test
+    public void testBadGroupCreation() throws Exception {
+        app.goTo().groupPage();
+        Groups before = app.group().all(); // список объектов GroupData до создания группы
+        GroupData group = new GroupData().withName("test2'");
+        app.group().create(group);
+        assertThat(app.group().count(),equalTo(before.size()));
+        Groups after = app.group().all(); // содержит список элементов, после того, как создана новая группа
+        assertThat(after, equalTo(before));
+    }
 }
