@@ -16,13 +16,22 @@ public class AddNewContactTests extends TestBase {
         Contacts before = app.contact().all();
         app.contact().contactPage();
         ContactData contact = new ContactData().withFirstname("Al").withLastname("Ivanov").withAddress("г. Москва, проспект Ленинский, д.2").withMobile("+79510990101").withEmail("ivanov@mail.ru").withGroup("test123");
-
         app.contact().create(contact, app);
+        assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
-        assertThat(after.size(), equalTo(before.size() + 1));
-
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    }
+
+    @Test
+    public void testBadAddNewContact() throws Exception {
+        Contacts before = app.contact().all();
+        app.contact().contactPage();
+        ContactData contact = new ContactData().withFirstname("Al'").withLastname("Ivanov").withAddress("г. Москва, проспект Ленинский, д.2").withMobile("+79510990101").withEmail("ivanov@mail.ru").withGroup("test123");
+        app.contact().create(contact, app);
+        assertThat(app.contact().count(), equalTo(before.size()));
+        Contacts after = app.contact().all();
+        assertThat(after, equalTo(before));
     }
 
 }
