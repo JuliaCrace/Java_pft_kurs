@@ -31,7 +31,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHomePhone(String mobile) {
+    public ContactData withHomePhone(String homePhone) {
         this.homePhone = homePhone;
         return this;
     }
@@ -40,7 +40,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withWorkPhone(String mobile) {
+    public ContactData withWorkPhone(String workPhone) {
         this.workPhone = workPhone;
         return this;
     }
